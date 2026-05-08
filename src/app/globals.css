@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+/* ─── TAILWIND V4 THEME ─── */
+@theme {
+  /* Colors */
+  --color-navy-deep: #050A12;
+  --color-navy: #0A192F;
+  --color-navy-mid: #0D2137;
+  --color-electric: #00C2FF;
+  --color-electric-dim: #0096CC;
+  --color-gold: #FFB800;
+  --color-gold-dim: #CC9200;
+  --color-muted: #8899AA;
+  --color-light: #F8FAFC;
+
+  /* Fonts */
+  --font-sans: var(--font-inter), 'Inter', sans-serif;
+  --font-bebas: var(--font-bebas), 'Bebas Neue', sans-serif;
+  --font-barlow: var(--font-barlow), 'Barlow Condensed', sans-serif;
+
+  /* Animations */
+  --animate-ticker: ticker 28s linear infinite;
+  --animate-pulse-glow: pulseGlow 2s ease-in-out infinite;
+  --animate-dot-pulse: dotPulse 2s infinite;
+  --animate-fade-in-up: fadeInUp 0.7s ease both;
+  --animate-fade-in-down: fadeInDown 0.7s ease both;
+  --animate-track-slide: trackSlide 3s ease-in-out infinite alternate;
+
+  /* Keyframes */
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes trackSlide {
+    0% { opacity: 0.4; }
+    100% { opacity: 1; }
+  }
+  @keyframes dotPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+}
+
+/* ─── CSS VARS (for direct usage in custom CSS) ─── */
+:root {
+  --navy-deep: #050A12;
+  --navy: #0A192F;
+  --navy-mid: #0D2137;
+  --blue: #00C2FF;
+  --blue-dim: #0096CC;
+  --gold: #FFB800;
+  --gold-dim: #CC9200;
+  --white: #F8FAFC;
+  --muted: #8899AA;
+  --border: rgba(0, 194, 255, 0.15);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--navy-deep);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+/* ─── NOISE OVERLAY ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* ─── CUSTOM SCROLLBAR ─── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--navy-deep); }
+::-webkit-scrollbar-thumb { background: var(--blue-dim); border-radius: 2px; }
+
+::selection {
+  background: rgba(0, 194, 255, 0.25);
+  color: var(--white);
+}
+
+/* ─── STAT CARD TOP BORDER ─── */
+.stat-card-top::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--blue);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: left;
+}
+.stat-card-top:hover::before { transform: scaleX(1); }
+
+/* ─── PB CARD GRADIENT BORDER ─── */
+.pb-gradient-border::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--gold));
+}
+
+/* ─── OLYMPIC WATERMARK ─── */
+.olympic-watermark {
+  position: absolute;
+  right: -2rem;
+  top: 50%;
+  transform: translateY(-50%) rotate(-15deg);
+  font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
+  font-size: clamp(6rem, 12vw, 12rem);
+  color: rgba(255, 184, 0, 0.04);
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* ─── TIMELINE LINE ─── */
+.timeline-line::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, var(--blue), var(--gold), transparent);
+}
+
+/* ─── RECHARTS CUSTOM ─── */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: rgba(0, 194, 255, 0.08) !important;
+}
+.recharts-text { fill: var(--muted) !important; font-size: 0.72rem !important; }
+
+/* ─── SWIPER CUSTOM ─── */
+.swiper-pagination-bullet { background: var(--muted) !important; }
+.swiper-pagination-bullet-active { background: var(--gold) !important; }

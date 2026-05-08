@@ -1,0 +1,28 @@
+export const siteConfig = {
+  name: 'Ayomal Akalanka',
+  tagline: 'Road to Olympic Greatness',
+  subtitle: 'Sri Lankan National Athlete | 400m & 400m Hurdles',
+  heroStatement:
+    "Sri Lanka's fastest rising 400m hurdles athlete — rewriting records and chasing Olympic glory from Hatton to the world stage.",
+  phone: '+94 77 496 7251',
+  email: 'ayomalakalanka@athlete.lk',
+  worldAthleticsUrl: 'https://worldathletics.org/athletes/sri-lanka/ayomal-akalanka',
+  instagram: '',
+  twitter: '',
+  school: 'Ambagamuwa Central College',
+  hometown: 'Hatton, Sri Lanka',
+  coach: 'Anura Bandara',
+  previousSchool: 'Sri Pada Central College, Hatton',
+  affiliation: 'Sri Lanka Athletics Federation',
+  olympicYear: 2028,
+  olympicCity: 'Los Angeles',
+  olympicDate: '2028-07-14T00:00:00',
+  navLinks: [
+    { label: 'About', href: '#about' },
+    { label: 'Achievements', href: '#achievements' },
+    { label: 'Performance', href: '#performance' },
+    { label: 'Journey', href: '#journey' },
+    { label: 'Gallery', href: '#gallery' },
+    { label: 'LA 2028', href: '#olympic' },
+  ],
+}
